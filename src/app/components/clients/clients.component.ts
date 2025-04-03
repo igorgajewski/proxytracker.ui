@@ -19,8 +19,8 @@ export class ClientsComponent {
   currentPage: number = 1;
   itemsPerPage: number = 30;
 
-  sourceArchivedTooltipMessage: string = "Tells if video source file is archived and can be unarchived."
-  deletionOffsetsTooltipMessage: string ="Files will be deleted from server after deletion offset passes, and you will have to unarchive them if needed."
+  deletionOffsetsTooltipMessage: string = "Files will be deleted from server after deletion offset passes, and you will have to unarchive them if needed."
+  atlasProductionClientTooltipMessage: string = "If client is integrated with Atlas, proxy files will have Media ID assigned and will be a"
 
   constructor(private apiService: ApiService, private router: Router) {}
 
