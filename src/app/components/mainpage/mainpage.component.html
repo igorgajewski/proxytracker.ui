@@ -1,0 +1,27 @@
+<div class="container" style="min-height: 70vh; display: flex; align-items: center;">
+    <div class="container" style="padding: 50px;max-width:400px; background-color:lightgrey;border-radius:5px">
+        <h4 class="text-start">Proxy Tracker</h4>
+        <div class="row justify-content-center flex-nowrap" style="padding-bottom:10px">
+            <div class="col">
+                <select [(ngModel)]="selectedView" name="viewDropdown" class="form-select">
+                    <option value="" selected disabled>Select View</option>
+                    <option *ngFor="let v of views" [value]="v">{{v}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row justify-content-center flex-nowrap" style="padding-bottom:10px">
+            <div class="col">
+                <select [(ngModel)]="selectedClient" name="clientDropdown" class="form-select" [disabled]="!selectedView || selectedView === views[0]">
+                        <option value="" selected disabled>Select Client</option>
+                        <option *ngFor="let c of clients" [value]="c">{{c}}</option>
+                    </select>
+
+            </div>
+        </div>
+        <div class="row justify-content-end flex-nowrap" style="padding-bottom:10px">
+            <div class="col-auto">
+                <button class="btn btn-dark" [disabled]="!selectedView || (selectedView !== views[0] && !selectedClient)" (click)="onNavigate()">Show</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+<ul class="pagination justify-content-center " style="margin:0; white-space: nowrap;">
+    <!-- First Page Button -->
+    <li class="page-item" [ngClass]="{'disabled': currentPage === 1}" (click)="firstPage()" title="First">
+      <a class="page-link" [attr.aria-disabled]="currentPage === 1 ? 'true' : null">
+        <i class="bi bi-skip-start-fill" aria-hidden="true"></i>
+      </a>
+    </li>
+    <!-- Previous Page Button -->
+    <li class="page-item" [ngClass]="{'disabled': currentPage === 1}" (click)="prevPage()" title="Previous">
+      <a class="page-link" [attr.aria-disabled]="currentPage === 1 ? 'true' : null">
+        <i class="bi bi-play-fill" style="transform: scaleX(-1); display: inline-block;" aria-hidden="true"></i>
+      </a>
+    </li>
+    <!-- Label "Page" -->
+    <li>
+      <p style="margin: 0; display: table-cell; vertical-align: middle; padding: 7px;">Page</p>
+    </li>
+    <!-- Page Number Input -->
+    <li class="page-item disabled" title="Page {{ currentPage }}">
+      <input
+        type="text"
+        class="form-control"
+        [value]="currentPage"
+        style="width:60px"
+      >
+    </li>
+    <!-- Label "of TotalPages" -->
+    <li>
+      <p style="margin: 0; display: table-cell; vertical-align: middle; padding: 7px;">of {{ totalPages }}</p>
+    </li>
+    <!-- Next Page Button -->
+    <li class="page-item" [ngClass]="{'disabled': currentPage === totalPages}" (click)="nextPage()" title="Next">
+      <a class="page-link" [attr.aria-disabled]="currentPage >= totalPages ? 'true' : null">
+        <i class="bi bi-play-fill" aria-hidden="true"></i>
+      </a>
+    </li>
+    <!-- Last Page Button -->
+    <li class="page-item" [ngClass]="{'disabled': currentPage === totalPages}" (click)="lastPage()" title="Last">
+      <a class="page-link" [attr.aria-disabled]="currentPage === totalPages ? 'true' : null">
+        <i class="bi bi-skip-end-fill" aria-hidden="true"></i>
+      </a>
+    </li>
+    <!-- Spacer -->
+    <li style="width:10px"></li>
+    <!-- Items per Page Select -->
+    <li class="page-item" title="Set Page Size">
+      <select class="form-select" (change)="onItemsPerPageChange($event)" style="width:auto">
+        <option *ngFor="let option of itemsPerPageOptions" [value]="option">
+          {{ option }}
+        </option>
+      </select>
+    </li>
+    <!-- Label "items per page" -->
+    <li>
+      <p style="margin: 0; display: table-cell; vertical-align: middle; padding: 7px;">items per page</p>
+    </li>
+  </ul>
+  
