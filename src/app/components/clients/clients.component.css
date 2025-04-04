@@ -1,32 +1,25 @@
+.client-table-wrapper {
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  width: auto;
+  margin-left: var(--table-margins);
+  margin-right: var(--table-margins);
+  padding-left: 1px;
+}
 
-.client-table-wrapper{
-    max-height: calc(100vh - 150px);
-    overflow-y: auto;
-    scrollbar-gutter: stable;
-    width:auto;
-    margin-left: var(--table-margins);
-    margin-right: var(--table-margins);
-}
 .client-table {
-    border-color: #ccc;
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: separate;
 }
-/* First header row: top row */
-.table thead tr:first-child th {
-    position: sticky;
-    top: 0;
-    background-color: #fff;
-    z-index: 3; /* higher z-index to overlap the next row */
-    border-bottom: 2px solid #dee2e6;
-  }
-  
-  /* Second header row: will stick below the first row */
-  .table thead tr:nth-child(2) th {
-    position: sticky;
-    top: 40px; /* adjust based on the actual height of your first row */
-    background-color: #fff;
-    z-index: 2;
-    border-bottom: 2px solid #dee2e6;
-  }
-.client-table th.deletion-offset-header{
-    text-align: center;
+.client-table thead th {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  z-index: 10;
+}
+.client-table th.deletion-offset-header {
+  text-align: center;
 }

@@ -8,26 +8,17 @@
     <div class="col-4 text-center">
       <h3>Proxy clients</h3>
     </div>
+    <div class="col-4 input-group" style="width:450px">
+      <input type="search" class="form-control me-2" placeholder="Search clients" >
+      <button class="btn btn-outline-dark" type="submit"><i class="bi bi-search"></i></button>
+    </div>
   </div>
   <div id="tableBody" class="table table-responsive client-table-wrapper">
     <table class="table table-bordered table-hover client-table">
       <thead>
         <tr>
-          <th>
-            <div class="input-group">
-              <input type="search" class="form-control me-2" placeholder="Search client" >
-              <button class="btn btn-outline-dark" type="submit"><i class="bi bi-search"></i></button>
-            </div>
-          </th>
-          <th rowspan="2">Source archived?</th>
-          <th colspan="7" class="deletion-offset-header">
-            Deletion offsets (in days) <i class="bi bi-info-circle" placement="top" ngbTooltip="{{deletionOffsetsTooltipMessage}}"></i>
-          </th>
-          <th rowspan="2">Atlas production client?</th>
-          <th rowspan="2">Contact</th>
-        </tr>
-        <tr>
           <th>Name</th>
+          <th>Source archived?</th>
           <th>MP4</th>
           <th>MP4X</th>
           <th>MPG</th>
@@ -35,6 +26,8 @@
           <th>Source</th>
           <th>Audio</th>
           <th>Document</th>
+          <th>atlas</th>
+          <th>contact</th>
         </tr>
       </thead>
       <tbody>
