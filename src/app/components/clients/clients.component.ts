@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { PaginatorComponent } from '../paginator/paginator.component';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { PaginatedcomponentComponent } from '../paginatedcomponent/paginatedcomponent.component';
 
 @Component({
   selector: 'app-clients',
@@ -12,21 +13,18 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './clients.component.html',
   styleUrl: './clients.component.css',
 })
-export class ClientsComponent {
-  clients: Client[] = [];
-
-  displayedClients: Client[] = [];
-  currentPage: number = 1;
-  itemsPerPage: number = 30;
+export class ClientsComponent extends PaginatedcomponentComponent<Client>{
 
   deletionOffsetsTooltipMessage: string = "Files will be deleted from server after deletion offset passes, and you will have to unarchive them if needed."
   atlasProductionClientTooltipMessage: string = "If client is integrated with Atlas, proxy files will have Media ID assigned and will be a"
 
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(private apiService: ApiService, protected override router: Router) {
+    super(router);
+  }
 
   ngOnInit() {
     this.apiService.getClients().subscribe((clients: Client[]) => {
-      this.clients = clients.map((item: any) => {
+      this.items = clients.map((item: any) => {
         return new Client(
           item.id,
           item.name,
@@ -43,33 +41,9 @@ export class ClientsComponent {
         );
       })
       .sort((a, b) => a.name.localeCompare(b.name));
-      this.updateDisplayedClients();
+      this.updateDisplayedItems();
     });
   }
 
-  navigateToMainPage(): void {
-    this.router.navigate(['/']);
-  }
-  get totalPages(): number {
-    return this.itemsPerPage === 0
-      ? 1
-      : Math.ceil(this.clients.length / this.itemsPerPage);
-  }
-
-  updateDisplayedClients() {
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    const endIndex = startIndex + this.itemsPerPage;
-    this.displayedClients = this.clients.slice(startIndex, endIndex);
-  }
-
-  onPageChange(newPage: number) {
-    this.currentPage = newPage;
-    this.updateDisplayedClients();
-  }
   
-  onItemsPerPageChange(newItemsPerPage: number) {
-    this.itemsPerPage = newItemsPerPage;
-    this.currentPage = 1;
-    this.updateDisplayedClients();
-  }
 }

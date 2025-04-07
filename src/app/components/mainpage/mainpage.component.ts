@@ -37,5 +37,8 @@ export class MainpageComponent {
     if (this.selectedView === 'Clients'){
       this.router.navigate(['/clients'])
     }
+    else if (this.selectedView === 'Proxy'){
+      this.router.navigate(['/proxy', this.selectedClient])
+    }
     }
 }
