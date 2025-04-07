@@ -1,0 +1,58 @@
+<div class="container-fluid">
+    <div id="tableHeader" class="row align-items-center flex-nowrap">
+      <div class="col-4">
+        <button type="button" class="btn" (click)="navigateToMainPage()">
+          <h4><i class="bi bi-reply-fill" style="color: orange"></i>Main menu</h4>
+        </button>
+      </div>
+      <div class="col-4 text-center">
+        <h3>Proxy clients</h3>
+      </div>
+      <div class="col-4 input-group" style="width:450px">
+        <input type="search" class="form-control me-2" placeholder="Search clients" >
+        <button class="btn btn-outline-dark" type="submit"><i class="bi bi-search"></i></button>
+      </div>
+    </div>
+    <div id="tableBody" class="table table-responsive client-table-wrapper">
+      <table class="table table-bordered table-hover client-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Source archived?</th>
+            <th>MP4</th>
+            <th>MP4X</th>
+            <th>MPG</th>
+            <th>MPGX</th>
+            <th>Source</th>
+            <th>Audio</th>
+            <th>Document</th>
+            <th>atlas</th>
+            <th>contact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let client of displayedItems">
+            <td>{{ client.name }}</td>
+            <td>{{ client.archiveSource === true ? "Yes" : "No" }}</td>
+            <td>{{ client.mp4DeletionOffset }}</td>
+            <td>{{ client.mp4xDeletionOffset }}</td>
+            <td>{{ client.mpgDeletionOffset }}</td>
+            <td>{{ client.mpgxDeletionOffset }}</td>
+            <td>{{ client.sourceDeletionOffset }}</td>
+            <td>{{ client.wavDeletionOffset }}</td>
+            <td>{{ client.docDeletionOffset }}</td>
+            <td>{{ client.ifAtlasProductionClient === true ? "Yes" : "No" }}</td>
+            <td>{{ client.contact }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <app-paginator
+      [currentPage]="currentPage"
+      [totalPages]="totalPages"
+      (pageChange)="onPageChange($event)"
+      (itemsPerPageChange)="onItemsPerPageChange($event)"
+    >
+    </app-paginator>
+  </div>
+  
