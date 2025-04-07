@@ -3,7 +3,7 @@ import { Client } from "../../../models/client";
 // Generate an array of 100 mock clients with random values
 const MOCK_CLIENTS: Client[] = Array.from({ length: 100 }, (_, i) => ({
   id: i + 1,
-  name: `Client ${i + 1}`,
+  name: `Client_${i + 1}`,
   archiveSource: Math.random() > 0.5,
   mp4DeletionOffset: Math.floor(Math.random() * 100),
   mpgDeletionOffset: Math.floor(Math.random() * 100),
