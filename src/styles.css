@@ -1,6 +1,29 @@
 :root{
     --table-margins: 10px;
     --client-table-header-height: 56px;
+    --id-col-width: 70px;
+    --proxy-filename-width: 300px;
+    --proxy-subfolder-width: 300px;
+    --proxy-atlas-id-width: 200px;
+    --proxy-ar-width: 70px;
+    --proxy-fps-width: 80px;
+    --proxy-bitc-width: 160px;
+    --proxy-audio-config-width: 190px;
+    --proxy-duration-width: 190px;
+    --proxy-extension-width: 120px;
+    --proxy-size-width: 85px;
+    --proxy-arrival-date-width: 130px;
+    --proxy-deletion-date-width: 140px;
+    --proxy-creation-date-width: 140px;
+    --proxy-unarchive-width: 105px;
+    --proxy-prolong-width: 90px;
+
+    --proxy-source-color: #ffffff;
+    --proxy-mp4-color: #b7d7e8;
+    --proxy-mpg-color: #c0ded9;
+    --proxy-mpgx-color: #96ceb4;
+    --proxy-mp4x-color: #b7d7f8;
+
 }
 body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;

@@ -1,0 +1,96 @@
+.form-check-input:checked {
+    background-color: #212529 !important;
+    border: 0;
+}
+
+.form-check-input:focus,
+.label::after,
+label.form-check-label:focus,
+.form-check-input::after,
+.form-check-input:not(:disabled):not(.disabled):active:focus {
+    color: black;
+    outline: 0;
+    border: 0;
+    box-shadow: 0 0 0 0.2rem #6c757d !important;
+}
+
+.id {
+    width: var(--id-col-width);
+}
+
+.filename {
+    width: var(--proxy-filename-width);
+}
+
+.subfolder {
+    width: var(--proxy-subfolder-width);
+}
+
+.atlas-id {
+    width: var(--proxy-atlas-id-width);
+}
+
+.ar {
+    width: var(--proxy-ar-width);
+}
+
+.fps {
+    width: var(--proxy-fps-width);
+}
+
+.bitc {
+    width: var(--proxy-bitc-width);
+}
+
+.audio-config {
+    width: var(--proxy-audio-config-width);
+}
+
+.duration {
+    width: var(--proxy-duration-width);
+}
+
+.extension {
+    width: var(--proxy-extension-width);
+}
+
+.arrival-date {
+    width: var(--proxy-arrival-date-width);
+}
+
+.deletion-date {
+    width: var(--proxy-deletion-date-width);
+}
+
+.unarchive {
+    width: var(--proxy-unarchive-width);
+}
+
+.prolong {
+    width: var(--proxy-prolong-width);
+}
+
+.source {
+    text-align: left;
+    background-color: var(--proxy-source-color);
+}
+
+.mp4 {
+    text-align: center;
+    background-color: var(--proxy-mp4-color);
+}
+
+.mp4x {
+    text-align: center;
+    background-color: var(--proxy-mp4x-color);
+}
+
+.mpg {
+    text-align: center;
+    background-color: var(--proxy-mpg-color);
+}
+
+.mpgx {
+    text-align: center;
+    background-color: var(--proxy-mpgx-color);
+}

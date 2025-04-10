@@ -1,58 +1,172 @@
 <div class="container-fluid">
-    <div id="tableHeader" class="row align-items-center flex-nowrap">
-      <div class="col-4">
-        <button type="button" class="btn" (click)="navigateToMainPage()">
-          <h4><i class="bi bi-reply-fill" style="color: orange"></i>Main menu</h4>
-        </button>
+  <div id="tableHeader" class="row align-items-center flex-nowrap">
+    <div class="col-auto">
+      <button type="button" class="btn" (click)="navigateToMainPage()">
+        <h4><i class="bi bi-reply-fill" style="color: orange"></i>Main menu</h4>
+      </button>
+    </div>
+    <div class="col-auto">
+      <select id="viewChangeDropdown" class="form-select header-dropdown">
+        <option value="Proxy" selected>Proxy</option>
+        <option value="Audio">Audio</option>
+        <option value="Documents">Documents</option>
+      </select>
+    </div>
+    <div class="col text-center">
+      <h3>Proxy Log for {{clientName}}</h3>
+    </div>
+    <div class="col-auto form-group">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="displaySourceFile" [(ngModel)]="showSourceFileInfo">
+        <label class="form-check-label" for="displaySourceFile">Source File</label>
       </div>
-      <div class="col-4 text-center">
-        <h3>Proxy clients</h3>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="displayMP4" [(ngModel)]="showMp4Info">
+        <label class="form-check-label" for="displayMP4">MP4</label>
       </div>
-      <div class="col-4 input-group" style="width:450px">
-        <input type="search" class="form-control me-2" placeholder="Search clients" >
-        <button class="btn btn-outline-dark" type="submit"><i class="bi bi-search"></i></button>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="displayMP4X" [(ngModel)]="showMp4xInfo">
+        <label class="form-check-label" for="displayMP4X">MP4X</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="displayMPG" [(ngModel)]="showMpgInfo">
+        <label class="form-check-label" for="displayMPG">MPG</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="displayMPGX" [(ngModel)]="showMpgxInfo">
+        <label class="form-check-label" for="displayMPGX">MPGX</label>
       </div>
     </div>
-    <div id="tableBody" class="table table-responsive client-table-wrapper">
-      <table class="table table-bordered table-hover client-table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Source archived?</th>
-            <th>MP4</th>
-            <th>MP4X</th>
-            <th>MPG</th>
-            <th>MPGX</th>
-            <th>Source</th>
-            <th>Audio</th>
-            <th>Document</th>
-            <th>atlas</th>
-            <th>contact</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let client of displayedItems">
-            <td>{{ client.name }}</td>
-            <td>{{ client.archiveSource === true ? "Yes" : "No" }}</td>
-            <td>{{ client.mp4DeletionOffset }}</td>
-            <td>{{ client.mp4xDeletionOffset }}</td>
-            <td>{{ client.mpgDeletionOffset }}</td>
-            <td>{{ client.mpgxDeletionOffset }}</td>
-            <td>{{ client.sourceDeletionOffset }}</td>
-            <td>{{ client.wavDeletionOffset }}</td>
-            <td>{{ client.docDeletionOffset }}</td>
-            <td>{{ client.ifAtlasProductionClient === true ? "Yes" : "No" }}</td>
-            <td>{{ client.contact }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <app-paginator
-      [currentPage]="currentPage"
-      [totalPages]="totalPages"
-      (pageChange)="onPageChange($event)"
-      (itemsPerPageChange)="onItemsPerPageChange($event)"
-    >
-    </app-paginator>
   </div>
-  
+  <div id="tableBody" class="table table-responsive proxy-table-wrapper">
+    <table class="table table-bordered table-hover proxy-table">
+      <colgroup>
+        <col class="id" />
+        <col class="filename" />
+        <col class="subfolder" />
+        <col class="atlas-id" />
+        <ng-container *ngIf="showSourceFileInfo">
+          <col class="source ar" />
+          <col class="source fps" />
+          <col class="source bitc" />
+          <col class="source audio-config" />
+          <col class="source duration" />
+          <col class="source extension" />
+          <col class="source arrival-date" />
+          <col class="source deletion-date" />
+          <col class="source unarchive" />
+          <col class="source prolong" />
+        </ng-container>
+        <ng-container *ngIf="showMp4Info">
+          <col class="mp4 size" />
+          <col class="mp4 duration" />
+          <col class="mp4 creation-date" />
+          <col class="mp4 deletion-date" />
+          <col class="mp4 unarchive" />
+          <col class="mp4 prolong" />
+        </ng-container>
+        <ng-container *ngIf="showMp4xInfo">
+          <col class="mp4x size" />
+          <col class="mp4x creation-date" />
+          <col class="mp4x deletion-date" />
+          <col class="mp4x unarchive" />
+          <col class="mp4x prolong" />
+        </ng-container>
+        <ng-container *ngIf="showMpgInfo">
+          <col class="mpg size" />
+          <col class="mpg duration" />
+          <col class="mpg creation-date" />
+          <col class="mpg deletion-date" />
+          <col class="mpg unarchive" />
+          <col class="mpg prolong" />
+        </ng-container>
+        <ng-container *ngIf="showMpgxInfo">
+          <col class="mpgx size" />
+          <col class="mpgx creation-date" />
+          <col class="mpgx deletion-date" />
+          <col class="mpgx unarchive" />
+          <col class="mpgx prolong" />
+        </ng-container>
+      </colgroup>
+      <thead>
+        <tr>
+          <th class="id" [rowSpan]="2">clear filter</th>
+          <th class="filename">search bar</th>
+          <th class="subfolder">empty</th>
+          <th class="atlas-id">search bar</th>
+          <th *ngIf="showSourceFileInfo" colspan="10" style="text-align: center;" class="source">Source File</th>
+          <th *ngIf="showMp4Info" colspan="6" class="mp4">MP4</th>
+          <th *ngIf="showMp4xInfo" colspan="5" class="mp4x">MP4X</th>
+          <th *ngIf="showMpgInfo" colspan="6" class="mpg">MPG</th>
+          <th *ngIf="showMpgxInfo" colspan="5" class="mpgx">MPGX</th>
+        </tr>
+        <tr>
+          <th class="filename">Filename</th>
+          <th class="subfolder">Subfolder</th>
+          <th class="atlas-id">Atlas Media ID</th>
+          <ng-container *ngIf="showSourceFileInfo">
+            <th class="source ar">AR</th>
+            <th class="source fps">FPS</th>
+            <th class="source bitc">BITC</th>
+            <th class="source audio-config">Audio configuration</th>
+            <th class="source duration">duration</th>
+            <th class="source extension">extension</th>
+            <th class="source arrival-date">ARrival date</th>
+            <th class="source deletion-date">deletion date</th>
+            <th class="source unarchive">unarchive</th>
+            <th class="source prolong">prolong</th>
+          </ng-container>
+          <ng-container *ngIf="showMp4Info">
+            <th class="mp4">size</th>
+            <th class="mp4 duration">duration</th>
+            <th class="mp4">creation date</th>
+            <th class="mp4 deletion-date">deletion date</th>
+            <th class="mp4 unarchive">unarchive</th>
+            <th class="mp4 prolong">prolong</th>
+          </ng-container>
+          <ng-container *ngIf="showMp4xInfo">
+            <th class="mp4x">size</th>
+            <th class="mp4x">creation date</th>
+            <th class="mp4x deletion-date">deletion date</th>
+            <th class="mp4x unarchive">unarchive</th>
+            <th class="mp4x prolong">prolong</th>
+          </ng-container>
+          <ng-container *ngIf="showMpgInfo">
+            <th class="mpg">size</th>
+            <th class="mpg duration">duration</th>
+            <th class="mpg">creation date</th>
+            <th class="mpg deletion-date">deletion date</th>
+            <th class="mpg unarchive">unarchive</th>
+            <th class="mpg prolong">prolong</th>
+          </ng-container>
+          <ng-container *ngIf="showMpgxInfo">
+            <th class="mpgx">size</th>
+            <th class="mpgx">creation date</th>
+            <th class="mpgx deletion-date">deletion date</th>
+            <th class="mpgx unarchive">unarchive</th>
+            <th class="mpgx prolong">prolong</th>
+          </ng-container>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of displayedItems">
+          <td>{{ item.id }}</td>
+          <td class="filename">{{item.filename}}</td>
+          <td>{{item.subfolder}}</td>
+          <td>{{item.atlasMediaId}}</td>
+          <td>{{item.ar}}</td>
+          <td>{{item.fps}}</td>
+          <td>{{item.bitc}}</td>
+          <td>{{item.audioConfig}}</td>
+          <td>{{item.duration}}</td>
+          <td>{{item.extension}}</td>
+          <td>{{item.arrivalDate}}</td>
+          <td>{{item.deletionDate}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-paginator [currentPage]="currentPage" [totalPages]="totalPages" (pageChange)="onPageChange($event)"
+    (itemsPerPageChange)="onItemsPerPageChange($event)">
+  </app-paginator>
+</div>

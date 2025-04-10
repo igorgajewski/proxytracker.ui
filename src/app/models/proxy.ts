@@ -1,43 +1,43 @@
 export class Proxy {
     public id: number;
-    public name: string;
-    public archiveSource: boolean;
-    public mp4DeletionOffset: number;
-    public mpgDeletionOffset: number;
-    public mpgxDeletionOffset: number;
-    public mp4xDeletionOffset: number;
-    public sourceDeletionOffset: number;
-    public wavDeletionOffset: number;
-    public docDeletionOffset: number;
-    public ifAtlasProductionClient: boolean;
-    public contact: string;
+    public filename: string;
+    public subfolder: string;
+    public atlasMediaId: string;
+    public ar: string;
+    public fps: string;
+    public bitc: string;
+    public audioConfig: string;
+    public duration: string;
+    public extension: string;
+    public arrivalDate: string;
+    public deletionDate: string;
   
     constructor(
       id: number,
-      name: string,
-      archiveSource: boolean,
-      mp4DeletionOffset: number,
-      mpgDeletionOffset: number,
-      mpgxDeletionOffset: number,
-      mp4xDeletionOffset: number,
-      sourceDeletionOffset: number,
-      wavDeletionOffset: number,
-      docDeletionOffset: number,
-      ifAtlasProductionClient: boolean,
-      contact: string
+      filename: string,
+      subfolder: string,
+      atlasMediaId: string,
+      ar: string,
+      fps: string,
+      bitc: string,
+      audioConfig: string,
+      duration: string,
+      extension: string,
+      arrivalDate: string,
+      deletionDate: string
     ) {
       this.id = id;
-      this.name = name;
-      this.archiveSource = archiveSource;
-      this.mp4DeletionOffset = mp4DeletionOffset;
-      this.mpgDeletionOffset = mpgDeletionOffset;
-      this.mpgxDeletionOffset = mpgxDeletionOffset;
-      this.mp4xDeletionOffset = mp4xDeletionOffset;
-      this.sourceDeletionOffset = sourceDeletionOffset;
-      this.wavDeletionOffset = wavDeletionOffset;
-      this.docDeletionOffset = docDeletionOffset;
-      this.ifAtlasProductionClient = ifAtlasProductionClient;
-      this.contact = contact;
+      this.filename = filename;
+      this.subfolder = subfolder;
+      this.atlasMediaId = atlasMediaId;
+      this.ar = ar;
+      this.fps = fps;
+      this.bitc = bitc;
+      this.audioConfig = audioConfig;
+      this.duration = duration;
+      this.extension = extension;
+      this.arrivalDate = arrivalDate;
+      this.deletionDate = deletionDate;
     }
   }
   
