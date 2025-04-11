@@ -11,8 +11,11 @@
         </div>
         <div class="row justify-content-center flex-nowrap" style="padding-bottom:10px">
             <div class="col">
-                <select [(ngModel)]="selectedClient" name="clientDropdown" class="form-select" [disabled]="!selectedView || selectedView === views[0]">
-                        <option value="" selected disabled>Select Client</option>
+                <select [(ngModel)]="selectedClient"
+                class="selectpicker form-control"
+                data-live-search="true"
+                title="Select Client"
+                [disabled]="!selectedView || selectedView === views[0]">
                         <option *ngFor="let c of clients" [value]="c">{{c}}</option>
                     </select>
 

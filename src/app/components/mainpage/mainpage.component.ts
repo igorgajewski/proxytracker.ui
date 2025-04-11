@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common';
 
+declare var $: any;
+
 @Component({
   selector: 'app-mainpage',
   imports: [FormsModule, CommonModule],
@@ -13,12 +15,17 @@ import { CommonModule } from '@angular/common';
 export class MainpageComponent {
   views: string[] = ["Clients", "Proxy", "Audio", "Documents"];
   clients: string[] = [];
+  filteredClients: string[] = [];
   selectedView: string = '';
   selectedClient: string = '';
+  private previousDisabledState: boolean = false;
 
   constructor(private apiService:ApiService, private router: Router){  }
   ngOnInit(){
     this.getClients()
+  }
+  ngAfterViewInit() {
+    $('.selectpicker').selectpicker();
   }
 
   getClients(){
@@ -41,4 +48,10 @@ export class MainpageComponent {
       this.router.navigate(['/proxy', this.selectedClient])
     }
     }
-}
+    ngAfterViewChecked() {
+      const currentDisabledState = !this.selectedView || this.selectedView === this.views[0];
+      if (currentDisabledState !== this.previousDisabledState) {
+        $('.selectpicker').selectpicker('refresh');
+        this.previousDisabledState = currentDisabledState;
+      }
+}}

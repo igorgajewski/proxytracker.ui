@@ -1,0 +1,6 @@
+.form-select:focus{
+    color: black;
+    outline: 0;
+    border: 0;
+    box-shadow: 0 0 0 0.2rem #6c757d !important;
+}
